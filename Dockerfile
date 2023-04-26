@@ -22,6 +22,13 @@ RUN \
 ##### BUILDER
 
 FROM --platform=linux/amd64 node:16-alpine3.17 AS builder
+
+# add env variables
+ARG DATABASE_URL
+ARG LETSENCRYPT_HOST
+ARG NEXT_PUBLIC_CLIENTVAR
+ARG VIRTUAL_HOST
+
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .

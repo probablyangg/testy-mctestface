@@ -1,22 +1,5 @@
 version: "3.9"
 services:
   app:
-    platform: "linux/amd64"
-    build:
-      context: .
-      dockerfile: Dockerfile
-    working_dir: /app
-    image: testy-mctestface
     ports:
       - "3000:3000"
-    env_file:
-      - .env.dev
-  db:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: secretpassword
-      POSTGRES_USER: kernel
-      POSTGRES_DB: testy-mctestface
-    ports:
-      - "5434:5432"
