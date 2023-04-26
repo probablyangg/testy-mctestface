@@ -22,13 +22,12 @@ RUN \
 ##### BUILDER
 
 FROM --platform=linux/amd64 node:16-alpine3.17 AS builder
-ARG DATABASE_URL
-ARG NEXT_PUBLIC_CLIENTVAR
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# ENV NEXT_TELEMETRY_DISABLED 1
+RUN npx prisma generate
+RUN npx prisma migrate deploy
 
 RUN \
  if [ -f yarn.lock ]; then SKIP_ENV_VALIDATION=1 yarn build; \

@@ -2,6 +2,11 @@ version: "3.9"
 services:
   app:
     platform: "linux/amd64"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    image: testy-mctestface
     ports:
       - "3000:3000"
     env_file:
