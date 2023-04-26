@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  app:
+    expose:
+      - "3000"
+    env_file:
+      - .env.prod
+    networks: ["serve"]
+networks:
+  serve:
+    external: true

@@ -1,4 +1,5 @@
-.env
+.env.dev
+.env.prod
 Dockerfile
 .dockerignore
 node_modules
